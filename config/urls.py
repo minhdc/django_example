@@ -18,6 +18,8 @@ urlpatterns = [
     path(
         "users/",
         include("django_example.users.urls", namespace="users"),
+        "pvoexample/",
+        include("pvoexample.urls",namespace="pvoexample"),    
     ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
