@@ -6,15 +6,15 @@ from django.db import models
 class Word(models.Model):
     id = models.BigAutoField(primary_key=True)
     word = models.CharField(max_length = 50)
-    definition = models.TextField()
-    pic_url = models.URLField()
+    definition = models.TextField(default="undefined")
+    pic_url = models.URLField(default="")
 
 class Example(models.Model):
     id = models.BigAutoField(primary_key=True)
     example_desc = models.TextField()
-    keywords = models.TextField()
+    keywords = models.TextField(default="nokeyword")
     source = models.CharField(max_length = 200)
-    relation = models.IntegerField()
+    relation = models.IntegerField(default=-1)
 
 class WordExampleRelation(models.Model):
     word_id = models.ForeignKey(Word,on_delete = models.CASCADE) # need to reconsider
