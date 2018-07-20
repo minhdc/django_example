@@ -3,8 +3,9 @@
 {% block content %}
     <h2>Wordlist</h2>
     <ul>
-        {% for word in wordrelation %}
+        {% for word in word_list %}
             <li>{{word.word}}</li>
         {% endfor %}
     </ul>
+    {% include "footer.html" %}
 {% endblock %}

@@ -29,4 +29,9 @@ urlpatterns = [
         view = views.WordRelationView.as_view(),
         name="wordrelation",
     ),
+
+    url(regex=r"^wordexample$",
+        view = views.WordExampleListView.as_view(),
+        name="wordexample",
+    ),
 ]

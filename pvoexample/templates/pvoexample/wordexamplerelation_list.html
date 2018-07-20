@@ -3,13 +3,15 @@
 {% block content %}
     <h2>Wordlist</h2>
     <ul>
-        {% for each_rela in wordrelation_list %}
+        {% for each_rela in wordexamplerelation_list%}
             <li>
-                <h3>{{each_rela.word1_id}} - {{each_rela.relation}} - {{each_rela.word2_id}}</h3>
+                <h3>{{each_rela.word_id}} - {{each_rela.relation}} - {{each_rela.example_id}}</h3>
                 
             </li>
             
         {% endfor %}
     </ul>
+
     {% include "footer.html" %}
 {% endblock %}
+
