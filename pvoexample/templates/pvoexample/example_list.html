@@ -3,8 +3,8 @@
 {% block content %}
     <h2>Wordlist</h2>
     <ul>
-        {% for word in wordrelation %}
-            <li>{{word.word}}</li>
+        {% for example in example_list %}
+            <li>{{example.example_desc}}</li>
         {% endfor %}
     </ul>
 {% endblock %}

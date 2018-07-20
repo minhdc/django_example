@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Wordlist</h2>
+    <ul>
+        {% for each_rela in wordrelation_list %}
+            <li>
+                <h3>{{each_rela.word1_id}}</h3> -<h3>{{each_rela.relation}}</h3>- <h3>{{each_rela.word2_id}}</h3>
+                
+            </li>
+            
+        {% endfor %}
+    </ul>
+{% endblock %}

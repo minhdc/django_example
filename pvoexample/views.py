@@ -24,14 +24,21 @@ class WordListView(ListView):
 class WordDetailView(DetailView):
     model = Word
 
-class WordRelationView(DetailView):
+class WordRelationView(ListView):
     model = WordRelation
+
+    def get_word_relation_list(request):
+        return render(request,'pvoexample/wordrelation.html',model)
+    
 
 '''
     EXAMPLE
 '''
 class ExampleListView(ListView):
     model = Example
+
+    def get_example_list(request):
+        return render(request,'pvoexample/example.html',model)
 
 class WordExampleRelationListView(ListView):
     model = WordExampleRelation

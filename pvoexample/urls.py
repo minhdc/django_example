@@ -5,7 +5,7 @@ app_name = "pvoexample"
 
 urlpatterns = [    
     url(
-        regex=r'^index$',
+        regex=r'^$',
         view = views.IndexView.as_view(),
         name="index",
     ),
@@ -18,5 +18,15 @@ urlpatterns = [
     url(regex=r"^wordlist$",
         view = views.WordListView.as_view(),
         name="wordlist",
+    ),
+
+    url(regex=r"^example$",
+        view = views.ExampleListView.as_view(),
+        name="example",
+    ),
+
+    url(regex=r"^wordrelation$",
+        view = views.WordRelationView.as_view(),
+        name="wordrelation",
     ),
 ]
