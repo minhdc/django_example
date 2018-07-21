@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 
 # Create your models here.
@@ -6,8 +7,11 @@ from django.db import models
 class Word(models.Model):
     id = models.BigAutoField(primary_key=True)
     word = models.CharField(max_length = 50)
-    definition = models.TextField(default="undefined")
+    definition = models.TextField(default="")
     pic_url = models.URLField(default="")
+
+    #def get_absolute_url(self):
+    #    return reverse('word:detail',kwargs={"word":self.word,"definition":self.definition})
 
 class Example(models.Model):
     id = models.BigAutoField(primary_key=True)

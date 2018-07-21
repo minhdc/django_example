@@ -15,6 +15,11 @@ urlpatterns = [
         name="worddetail",
     ),
 
+    url(regex=r"^wordcreate$",
+        view = views.WordCreateView.as_view(),
+        name="wordcreate",
+    ),
+
     url(regex=r"^wordlist$",
         view = views.WordListView.as_view(),
         name="wordlist",
@@ -23,6 +28,11 @@ urlpatterns = [
     url(regex=r"^example$",
         view = views.ExampleListView.as_view(),
         name="example",
+    ),
+
+    url(regex=r"^examplecreate$",
+        view = views.ExampleCreateView.as_view(),
+        name="examplecreate",
     ),
 
     url(regex=r"^wordrelation$",
