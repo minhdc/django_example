@@ -10,16 +10,16 @@ urlpatterns = [
         name="index",
     ),
 
-    url(regex=r"^word$",
-        view = views.WordDetailView.as_view(),
-        name="worddetail",
+    url(regex=r"^api/$",
+        view = views.WordCreateReadView.as_view(),
+        name="word_rest_api",
     ),
 
-    url(regex=r"^wordcreate$",
-        view = views.WordCreateView.as_view(),
-        name="wordcreate",
+    url(regex=r"^api/(?P<word>[-\w]+)/$",
+        view = views.WordReadUpdateDeleteView.as_view(),
+        name="word_rest_api",
     ),
-
+    
     url(regex=r"^wordlist$",
         view = views.WordListView.as_view(),
         name="wordlist",

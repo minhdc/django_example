@@ -49,12 +49,16 @@ class ExampleActionMixin(object):
 '''
     WORD 
 '''
-'''
+
 class WordCreateReadView(ListCreateAPIView):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
     lookup_field = 'word'
 
+class WordReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    queryset = Word.objects.all()
+    serializer_class = WordSerializer
+    lookup_field = 'word'
 '''
 class WordCreateView(WordActionMixin,CreateView):
     model = Word
@@ -70,7 +74,7 @@ class WordUpdateView(WordActionMixin,UpdateView):
 
 class WordDetailView(DetailView):
     model = Word
-
+'''
 
 
 '''
