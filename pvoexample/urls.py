@@ -10,12 +10,12 @@ urlpatterns = [
         name="index",
     ),
 
-    url(regex=r"^api/$",
+    url(regex=r"^api/v1/words$",
         view = views.WordCreateReadView.as_view(),
         name="word_rest_api",
     ),
 
-    url(regex=r"^api/(?P<word>[-\w]+)/$",
+    url(regex=r"^api/v1/words/(?P<id>[-\w]+)/$",
         view = views.WordReadUpdateDeleteView.as_view(),
         name="word_rest_api",
     ),

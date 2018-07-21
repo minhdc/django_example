@@ -58,7 +58,7 @@ class WordCreateReadView(ListCreateAPIView):
 class WordReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
-    lookup_field = 'word'
+    lookup_field = 'id'
 '''
 class WordCreateView(WordActionMixin,CreateView):
     model = Word

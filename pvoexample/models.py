@@ -11,7 +11,7 @@ class Word(models.Model):
     pic_url = models.URLField(default="")
 
     def get_absolute_url(self):
-        return reverse('word:detail',kwargs={"word":self.word})
+        return reverse('word:detail',kwargs={"id":self.id})
 
 class Example(models.Model):
     id = models.BigAutoField(primary_key=True)
