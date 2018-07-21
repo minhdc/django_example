@@ -3,6 +3,7 @@ Base settings to build other settings files upon.
 """
 
 import environ
+import os
 
 ROOT_DIR = environ.Path(__file__) - 3  # (django_example/config/settings/base.py - 3 = django_example/)
 APPS_DIR = ROOT_DIR.path('django_example')
@@ -68,6 +69,8 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'webpack_loader',
+
 ]
 LOCAL_APPS = [
     'django_example.users.apps.UsersAppConfig',
@@ -239,3 +242,9 @@ SOCIALACCOUNT_ADAPTER = 'django_example.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+WEBPACK_LOADER = {
+    'DEFAULT' : {
+        'BUNDLE_DIR_NAME' : 'bundles/',
+        'STATS_FILE' : os.path.join(str(APPS_DIR),'webpack-stats.dev.json')
+    }
+}
