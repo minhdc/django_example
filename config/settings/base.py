@@ -70,6 +70,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'rest_framework',
     'webpack_loader',
+    'corsheaders',
 
 ]
 LOCAL_APPS = [
@@ -132,6 +133,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # new
+    'django.middleware.common.CommonMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -245,6 +248,10 @@ SOCIALACCOUNT_ADAPTER = 'django_example.users.adapters.SocialAccountAdapter'
 WEBPACK_LOADER = {
     'DEFAULT' : {
         'BUNDLE_DIR_NAME' : 'bundles/',
-        'STATS_FILE' : os.path.join(str(APPS_DIR),'webpack-stats.dev.json')
+        'STATS_FILE' : os.path.join(str(ROOT_DIR),'webpack-stats.dev.json')
     }
 }
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000/'#default localport for react
+)
