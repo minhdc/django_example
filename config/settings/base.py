@@ -141,7 +141,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
 ]
 
 # STATIC
@@ -252,6 +252,18 @@ WEBPACK_LOADER = {
     }
 }
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'#default localport for react
+    'localhost:3000/**',#default localport for react
+    'localhost:127.0.0.1/**'
 )
