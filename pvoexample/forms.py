@@ -27,7 +27,7 @@ class WordForm(Form):
 class WordForm(ModelForm):
     class Meta:
         model       = Word
-        fields      = ['id','word','definition','pic_url']
+        fields      = ['id','word','definition','pic']
     
            
 class ExampleForm(ModelForm):

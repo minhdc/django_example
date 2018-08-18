@@ -8,8 +8,11 @@ class Word(models.Model):
     id = models.BigAutoField(primary_key=True)
     word = models.CharField(max_length = 50)
     definition = models.TextField(default="")
-    pic_url = models.URLField(default="")
+    #pic_url = models.URLField(default="")
+    #changing pic_url into ImageField....
 
+    pic = models.ImageField(default="",upload_to="img")
+    
     def get_absolute_url(self):
         return reverse('word:detail',kwargs={"id":self.id})
 
