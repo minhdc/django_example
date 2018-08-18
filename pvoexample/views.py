@@ -10,7 +10,7 @@ from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from .models import Word,Example,WordExampleRelation,WordRelation
 from .forms import WordForm,ExampleForm
 
-from .serializer import WordSerializer
+from .serializer import WordSerializer,WordRelationSerializer
 
 
 '''
@@ -76,10 +76,18 @@ class WordDetailView(DetailView):
     model = Word
 '''
 
+class WordRelationCreateReadView(ListCreateAPIView):
+    queryset = WordRelation.objects.all()
+    serializer_class = WordRelationSerializer
+    lookup_field = 'word1_id'
 
+class WordRelationReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    queryset = WordRelation.objects.all()
+    serializer_class = WordSerializer
+    lookup_field = 'word1_id'
 '''
     WORD - CONCEPT
-'''
+
 class WordListView(ListView):       
     model = Word
     
@@ -91,7 +99,7 @@ class WordRelationView(ListView):
 
     def get_word_relation_list(request):
         return render(request,'pvoexample/wordrelation.html',model)
-    
+'''    
 
 '''
     EXAMPLE

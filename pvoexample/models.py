@@ -43,9 +43,6 @@ class WordExampleRelation(models.Model):
     relation_id = models.SmallIntegerField()   
     relation = models.CharField(max_length = 200)
 
-
-
-
 class WordRelation(models.Model):
     word1_id = models.ForeignKey(Word,on_delete = models.CASCADE,related_name='word1_id')
     word2_id = models.ForeignKey(Word,on_delete = models.CASCADE,related_name='word2_id')

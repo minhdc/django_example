@@ -5,6 +5,8 @@ Base settings to build other settings files upon.
 import environ
 import os
 
+from corsheaders.defaults import default_methods,default_headers
+
 ROOT_DIR = environ.Path(__file__) - 3  # (django_example/config/settings/base.py - 3 = django_example/)
 APPS_DIR = ROOT_DIR.path('django_example')
 
@@ -254,16 +256,17 @@ WEBPACK_LOADER = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_METHODS = (
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
+CORS_ALLOW_METHODS = default_methods + (
+   'delete',
 )
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/**',#default localport for react
-    'localhost:127.0.0.1/**'
+
+CORS_ALLOW_HEADERS = default_headers + (
+    #add headers here
 )
+
+CORS_PREFLIGHT_MAX_AGE = 86400
+
+#CORS_EXPOSE_HEADERS = ['X-Pagination-Current-Page']
+
+CORS_ALLOW_CREDENTIALS = True

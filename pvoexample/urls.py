@@ -16,17 +16,12 @@ urlpatterns = [
 
     url(regex=r"^api/v1/words$",
         view = views.WordCreateReadView.as_view(),
-        name="word_rest_api",
+        name="word_rest_api_create",
     ),
 
     url(regex=r"^api/v1/words/(?P<id>[-\w]+)/$",
         view = views.WordReadUpdateDeleteView.as_view(),
-        name="word_rest_api",
-    ),
-    
-    url(regex=r"^wordlist$",
-        view = views.WordListView.as_view(),
-        name="wordlist",
+        name="word_rest_api_rud",
     ),
 
     url(regex=r"^example$",
@@ -37,11 +32,6 @@ urlpatterns = [
     url(regex=r"^examplecreate$",
         view = views.ExampleCreateView.as_view(),
         name="examplecreate",
-    ),
-
-    url(regex=r"^wordrelation$",
-        view = views.WordRelationView.as_view(),
-        name="wordrelation",
     ),
 
     url(regex=r"^wordexample$",
