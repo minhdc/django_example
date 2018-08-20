@@ -11,6 +11,7 @@ from .models import Word,Example,WordExampleRelation,WordRelation
 from .forms import WordForm,ExampleForm
 
 from .serializer import WordSerializer,WordRelationSerializer
+from .serializer import ExampleSerializer,WordExampleRelationSerializer
 
 
 '''
@@ -104,6 +105,19 @@ class WordRelationView(ListView):
 '''
     EXAMPLE
 '''
+
+class ExampleCreateReadView(ListCreateAPIView):
+    queryset = Example.objects.all()
+    serializer_class = ExampleSerializer
+    lookup_field = 'id'
+
+class ExampleReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    queryset = Example.objects.all()
+    serializer_class = ExampleSerializer
+    lookup_field = 'id'
+
+    
+'''
 class ExampleCreateView(ExampleActionMixin,CreateView):
     model = Example
     success_msg = "Example created"
@@ -122,3 +136,17 @@ class WordExampleListView(ListView):
 
     def get_word_example_relation_list(request):
         return render(request,'pvoexample/wordexample.html',model)
+'''
+
+'''
+WORD_EXAMPLE
+'''
+class WordExampleRelationCreateReadView(ListCreateAPIView):
+    queryset = WordExampleRelation.objects.all()
+    serializer_class = WordExampleRelationSerializer
+    lookup_field = 'word_id'
+
+class WordExampleRelationReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    queryset = WordExampleRelation.objects.all()
+    serializer_class = WordExampleRelationSerializer
+    lookup_field = 'word_id'

@@ -13,7 +13,7 @@ urlpatterns = [
         view = TemplateView.as_view(template_name="pvoexample/index.html"),
         name="index",
     ),
-
+    #WORD 
     url(regex=r"^api/v1/words$",
         view = views.WordCreateReadView.as_view(),
         name="word_rest_api_create",
@@ -24,18 +24,37 @@ urlpatterns = [
         name="word_rest_api_rud",
     ),
 
-    url(regex=r"^example$",
-        view = views.ExampleListView.as_view(),
-        name="example",
+    #WORD-WORD RELATION
+    url(regex=r"^api/v1/wordrelation/(?P<id>[-\w]+)/$",
+        view = views.WordRelationReadUpdateDeleteView.as_view(),
+        name="word_relation_rest_api_rud",
     ),
 
-    url(regex=r"^examplecreate$",
-        view = views.ExampleCreateView.as_view(),
-        name="examplecreate",
+    url(regex=r"^api/v1/wordrelation$",
+        view = views.WordRelationCreateReadView.as_view(),
+        name="word_relation_rest_api_create",
     ),
 
-    url(regex=r"^wordexample$",
-        view = views.WordExampleListView.as_view(),
-        name="wordexample",
+    #WORD_EXAMPLE RELATION
+    url(regex=r"^api/v1/wordexample/(?P<id>[-\w]+)/$",
+        view = views.WordExampleRelationReadUpdateDeleteView.as_view(),
+        name="word_example_relation_rest_api_rud",
     ),
+
+    url(regex=r"^api/v1/wordexample$",
+        view = views.WordExampleRelationCreateReadView.as_view(),
+        name="word_example_relation_rest_api_create",
+    ),
+
+    #EXAMPLE 
+    url(regex=r"^api/v1/example/(?P<id>[-\w]+)/$",
+        view = views.ExampleReadUpdateDeleteView.as_view(),
+        name="example_relation_rest_api_rud",
+    ),
+
+    url(regex=r"^api/v1/example$",
+        view = views.ExampleCreateReadView.as_view(),
+        name="example_relation_rest_api_create",
+    ),
+   
 ]
