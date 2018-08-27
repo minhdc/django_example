@@ -40,12 +40,14 @@ class WordExampleRelation(models.Model):
 
     word_id = models.ForeignKey(Word,on_delete = models.CASCADE) # need to reconsider
     example_id = models.ForeignKey(Example,on_delete = models.CASCADE)
-    relation_id = models.SmallIntegerField()   
+    relation_id = models.SmallIntegerField(null=False)   
     relation = models.CharField(max_length = 200)
 
 class WordRelation(models.Model):
     word1_id = models.ForeignKey(Word,on_delete = models.CASCADE,related_name='word1_id')
     word2_id = models.ForeignKey(Word,on_delete = models.CASCADE,related_name='word2_id')
+    #word1 = models.CharField(max_length=50,null=False,default="new word")
+    #word2 = models.CharField(max_length=50,null=False,default="new word")
     relation = models.SmallIntegerField()
 
 

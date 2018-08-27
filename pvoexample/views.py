@@ -80,12 +80,13 @@ class WordDetailView(DetailView):
 class WordRelationCreateReadView(ListCreateAPIView):
     queryset = WordRelation.objects.all()
     serializer_class = WordRelationSerializer
-    lookup_field = 'word1_id'
+    #lookup_field = 'word1_id'
 
 class WordRelationReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     queryset = WordRelation.objects.all()
-    serializer_class = WordSerializer
-    lookup_field = 'word1_id'
+    serializer_class = WordRelationSerializer
+    lookup_field = ('word1_id','word2_id')
+    
 '''
     WORD - CONCEPT
 

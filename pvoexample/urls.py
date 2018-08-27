@@ -25,7 +25,7 @@ urlpatterns = [
     ),
 
     #WORD-WORD RELATION
-    url(regex=r"^api/v1/wordrelation/(?P<id>[-\w]+)/$",
+    url(regex=r"^api/v1/wordrelation/(?P<word1_id><word2_id>[-\w]+)/$",
         view = views.WordRelationReadUpdateDeleteView.as_view(),
         name="word_relation_rest_api_rud",
     ),
