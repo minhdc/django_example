@@ -50,4 +50,7 @@ class WordRelation(models.Model):
     #word2 = models.CharField(max_length=50,null=False,default="new word")
     relation = models.SmallIntegerField()
 
+    #class Meta:
+    #    unique_togeter = ('journal_id','volume_number',)
+
 

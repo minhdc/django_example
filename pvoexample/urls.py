@@ -25,15 +25,16 @@ urlpatterns = [
     ),
 
     #WORD-WORD RELATION
-    url(regex=r"^api/v1/wordrelation/(?P<word1_id><word2_id>[-\w]+)/$",
-        view = views.WordRelationReadUpdateDeleteView.as_view(),
+    url(regex=r"^api/v1/wordrelationdetail/(?P<word1_id>[-\w]+)/(?P<word2_id>[-\w]+)$",        
+        view = views.WordRelationReadUpdateView.as_view(),
         name="word_relation_rest_api_rud",
-    ),
+    ), 
 
     url(regex=r"^api/v1/wordrelation$",
         view = views.WordRelationCreateReadView.as_view(),
         name="word_relation_rest_api_create",
     ),
+
 
     #WORD_EXAMPLE RELATION
     url(regex=r"^api/v1/wordexample/(?P<id>[-\w]+)/$",
@@ -45,6 +46,7 @@ urlpatterns = [
         view = views.WordExampleRelationCreateReadView.as_view(),
         name="word_example_relation_rest_api_create",
     ),
+
 
     #EXAMPLE 
     url(regex=r"^api/v1/example/(?P<id>[-\w]+)/$",

@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from rest_framework.validators import UniqueTogetherValidator
+
 
 from .models import Word,WordRelation,Example,WordExampleRelation
 
@@ -11,6 +13,12 @@ class WordRelationSerializer(serializers.ModelSerializer):
     class Meta:
         model       = WordRelation
         fields      = ['word1_id','word2_id','relation']
+        validators = [
+            UniqueTogetherValidator(
+                queryset = WordRelation.objects.all(),
+                fields=('word1_id','word2_id')
+            )
+        ]
 
 class ExampleSerializer(serializers.ModelSerializer):
     class Meta:

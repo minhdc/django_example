@@ -254,6 +254,10 @@ WEBPACK_LOADER = {
     }
 }
 
+#-----------
+# CORS
+#-----------
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = default_methods + (
@@ -270,3 +274,11 @@ CORS_PREFLIGHT_MAX_AGE = 86400
 #CORS_EXPOSE_HEADERS = ['X-Pagination-Current-Page']
 
 CORS_ALLOW_CREDENTIALS = True
+
+#------------
+# FILTER
+#------------
+REST_FRAMEWORK ={
+    'DEFAULT_FILTER_BACKENDS': 
+        ('django_filters.rest_framework.DjangoFilterBackend',) 
+}
