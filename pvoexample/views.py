@@ -111,7 +111,7 @@ class WordRelationCreateReadView(ListCreateAPIView):
     serializer_class = WordRelationSerializer    
     lookup_field = 'word1_id'
 
-class WordRelationReadUpdateView(MultipleFieldLookupMixin,RetrieveUpdateAPIView):    
+class WordRelationReadUpdateDeleteView(MultipleFieldLookupMixin,RetrieveUpdateDestroyAPIView):    
     queryset = WordRelation.objects.all()
     serializer_class = WordRelationSerializer
     lookup_fields = ('word1_id','word2_id')
