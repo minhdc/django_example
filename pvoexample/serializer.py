@@ -12,11 +12,11 @@ class WordSerializer(serializers.ModelSerializer):
 class WordRelationSerializer(serializers.ModelSerializer):
     class Meta:
         model       = WordRelation
-        fields      = ['word1_id','word2_id','relation']
+        fields      = ['parent_id','child_id','relation']
         validators = [
             UniqueTogetherValidator(
                 queryset = WordRelation.objects.all(),
-                fields=('word1_id','word2_id')
+                fields=('parent_id','child_id')
             )
         ]
 
@@ -29,3 +29,9 @@ class WordExampleRelationSerializer(serializers.ModelSerializer):
     class Meta:
         model       = WordExampleRelation
         fields      = "__all__"
+        validators = [
+            UniqueTogetherValidator(
+                queryset = WordExampleRelation.objects.all(),
+                fields=('word_id','example_id')
+            )
+        ]

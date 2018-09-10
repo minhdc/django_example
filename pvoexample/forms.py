@@ -33,5 +33,5 @@ class WordForm(ModelForm):
 class ExampleForm(ModelForm):
     class Meta:
         model       = Example
-        fields      = ['id','example_desc','keywords','source','relation']
+        fields      = ['id','example_desc','keywords','source']
 

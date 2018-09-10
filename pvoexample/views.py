@@ -81,12 +81,12 @@ class WordReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
 class WordRelationCreateReadView(ListCreateAPIView):
     queryset = WordRelation.objects.all()
     serializer_class = WordRelationSerializer    
-    lookup_field = 'word1_id'
+    lookup_field = 'parent_id'
 
 class WordRelationReadUpdateDeleteView(MultipleFieldLookupMixin,RetrieveUpdateDestroyAPIView):    
     queryset = WordRelation.objects.all()
     serializer_class = WordRelationSerializer
-    lookup_fields = ('word1_id','word2_id')
+    lookup_fields = ('parent_id','child_id')
 
 
 '''
@@ -100,7 +100,7 @@ class WordExampleRelationCreateReadView(ListCreateAPIView):
 class WordExampleRelationReadUpdateDeleteView(MultipleFieldLookupMixin,RetrieveUpdateDestroyAPIView):
     queryset = WordExampleRelation.objects.all()
     serializer_class = WordExampleRelationSerializer
-    lookup_field = ('word_id','example_id')
+    lookup_fields = ('word_id','example_id')
 
 '''
     EXAMPLE
