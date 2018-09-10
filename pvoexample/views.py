@@ -63,7 +63,6 @@ class MultipleFieldLookupMixin(object):
 '''
     WORD 
 '''
-
 class WordCreateReadView(ListCreateAPIView):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
@@ -73,37 +72,10 @@ class WordReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
     lookup_field = 'id'
+
+
 '''
-class WordCreateView(WordActionMixin,CreateView):
-    model = Word
-    success_msg = "Word created"
-    template_name = 'pvoexample/word_form.html'
-    form_class = WordForm
-    success_url = '/pvoexample/wordlist' 
-        
-class WordUpdateView(WordActionMixin,UpdateView):
-    model = Word
-    success_msg = "Word updated"
-    #fields = ('word','definition','pic_url')
-
-class WordDetailView(DetailView):
-    model = Word
-
-class WordRelationLookupMixin(object):
-    
-        handle mulitple field filtering based on a lookup_fields
-    
-    def get_object(self):
-        queryset = self.get_queryset()
-        queryset = self.filter_queryset(queryset)
-        filter = {}
-        for field in self.lookup_fields:
-            if self.kwargs[field]:
-                filter[field] = self.kwargs[field]
-        obj = get_object_or404(queryset,**filter)
-        self.check_object_permission(self.request,obj)
-
-        return obj
+    WORD RELATION
 '''
 
 class WordRelationCreateReadView(ListCreateAPIView):
@@ -117,23 +89,18 @@ class WordRelationReadUpdateDeleteView(MultipleFieldLookupMixin,RetrieveUpdateDe
     lookup_fields = ('word1_id','word2_id')
 
 
-
-  
 '''
-    WORD - CONCEPT
+    WORD_EXAMPLE
+'''
+class WordExampleRelationCreateReadView(ListCreateAPIView):
+    queryset = WordExampleRelation.objects.all()
+    serializer_class = WordExampleRelationSerializer
+    lookup_field = 'word_id'
 
-class WordListView(ListView):       
-    model = Word
-    
-    def get_word_list(request):
-        return render(request,'pvoexample/word_list.html',model)
-
-class WordRelationView(ListView):
-    model = WordRelation
-
-    def get_word_relation_list(request):
-        return render(request,'pvoexample/wordrelation.html',model)
-'''    
+class WordExampleRelationReadUpdateDeleteView(MultipleFieldLookupMixin,RetrieveUpdateDestroyAPIView):
+    queryset = WordExampleRelation.objects.all()
+    serializer_class = WordExampleRelationSerializer
+    lookup_field = ('word_id','example_id')
 
 '''
     EXAMPLE
@@ -149,38 +116,5 @@ class ExampleReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     serializer_class = ExampleSerializer
     lookup_field = 'id'
 
-    
-'''
-class ExampleCreateView(ExampleActionMixin,CreateView):
-    model = Example
-    success_msg = "Example created"
-    template_name = 'pvoexample/example_form.html'
-    form_class = ExampleForm
-    success_url = '/pvoexample/example'
-    
-class ExampleListView(ListView):
-    model = Example
 
-    def get_example_list(request):
-        return render(request,'pvoexample/example.html',model)
-
-class WordExampleListView(ListView):
-    model = WordExampleRelation
-
-    def get_word_example_relation_list(request):
-        return render(request,'pvoexample/wordexample.html',model)
-'''
-
-'''
-WORD_EXAMPLE
-'''
-class WordExampleRelationCreateReadView(ListCreateAPIView):
-    queryset = WordExampleRelation.objects.all()
-    serializer_class = WordExampleRelationSerializer
-    lookup_field = 'word_id'
-
-class WordExampleRelationReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
-    queryset = WordExampleRelation.objects.all()
-    serializer_class = WordExampleRelationSerializer
-    lookup_field = 'word_id'
 
