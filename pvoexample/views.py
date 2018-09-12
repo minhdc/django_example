@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic import ListView,DetailView,UpdateView
 from django.views.generic import TemplateView,View,CreateView,UpdateView
 
-from rest_framework.generics import ListCreateAPIView,ListAPIView
+from rest_framework.generics import ListCreateAPIView,ListAPIView,RetrieveAPIView
 from rest_framework.generics import RetrieveUpdateDestroyAPIView,RetrieveUpdateAPIView
 from rest_framework.generics import get_object_or_404
 
@@ -116,5 +116,10 @@ class ExampleReadUpdateDeleteView(RetrieveUpdateDestroyAPIView):
     serializer_class = ExampleSerializer
     lookup_field = 'id'
 
-
+class ExampleLatestObjectView(RetrieveAPIView):
+    queryset = Example.objects.all()
+    serializer_class = ExampleSerializer
+    
+    def get_object(self, *args, **kwargs):        
+        return self.queryset.last()
 

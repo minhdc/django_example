@@ -58,5 +58,8 @@ urlpatterns = [
         view = views.ExampleCreateReadView.as_view(),
         name="example_relation_rest_api_create",
     ),
-   
+    
+    url(regex=r"^api/v1/example/latest$",
+        view = views.ExampleLatestObjectView.as_view(),
+        name="example_latest_object" )
 ]

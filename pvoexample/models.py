@@ -25,9 +25,7 @@ class WordExampleRelation(models.Model):
     example_id = models.ForeignKey(Example,on_delete = models.CASCADE)
     relation_id = models.SmallIntegerField(null=False)       
 
-class WordRelation(models.Model):
-    #word1_id = models.ForeignKey(Word,on_delete = models.CASCADE,related_name='word1_id')
-    #word2_id = models.ForeignKey(Word,on_delete = models.CASCADE,related_name='word2_id')    
+class WordRelation(models.Model):    
     parent_id = models.ForeignKey(Word,on_delete = models.CASCADE,related_name='parent_id')
     child_id = models.ForeignKey(Word,on_delete = models.CASCADE,related_name='child_id')    
     relation = models.SmallIntegerField()
